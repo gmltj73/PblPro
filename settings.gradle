@@ -1,0 +1,2 @@
+include ':app', ':jpbc-api-1.2.1', ':jpbc-plaf-1.2.1', ':commons-compress-1.14', ':dropbox-android-sdk-1.6.3'
+rootProject.name='PblPro'

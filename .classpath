@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="app/build/generated/not_namespaced_r_class_sources/debug/r"/>
+	<classpathentry kind="src" path="app/build/generated/source/buildConfig/androidTest/debug"/>
+	<classpathentry kind="src" path="app/build/generated/source/buildConfig/debug"/>
+	<classpathentry kind="src" path="app/src/main/java"/>
+	<classpathentry kind="lib" path="app/build/intermediates/merged_java_res/debug/out.jar"/>
+	<classpathentry kind="lib" path="app/libs/dropbox-android-sdk-1.6.3.jar"/>
+	<classpathentry kind="lib" path="app/libs/jpbc-api-1.2.1.jar"/>
+	<classpathentry kind="lib" path="app/libs/jpbc-plaf-1.2.1.jar"/>
+	<classpathentry kind="lib" path="app/libs/json_simple-1.1.jar"/>
+	<classpathentry kind="lib" path="commons-compress-1.14/commons-compress-1.14.jar"/>
+	<classpathentry kind="lib" path="dropbox-android-sdk-1.6.3/dropbox-android-sdk-1.6.3.jar"/>
+	<classpathentry kind="lib" path="gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="jpbc-api-1.2.1/jpbc-api-1.2.1.jar"/>
+	<classpathentry kind="lib" path="jpbc-plaf-1.2.1/jpbc-plaf-1.2.1.jar"/>
+	<classpathentry kind="output" path="app/build/intermediates/javac/debug/classes"/>
+</classpath>
