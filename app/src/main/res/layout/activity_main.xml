@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/encbt"
+        android:id="@+id/uploadbt"
         android:layout_width="260dp"
         android:layout_height="60dp"
         android:layout_marginStart="59dp"
@@ -17,7 +17,7 @@
         android:layout_marginRight="59dp"
         android:layout_marginBottom="122dp"
         android:background="#dddddd"
-        android:text="Encryption"
+        android:text="Upload"
         app:layout_constraintBottom_toTopOf="@+id/keygenerationbt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.484"
@@ -39,14 +39,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/encbt" />
+        app:layout_constraintTop_toBottomOf="@+id/uploadbt" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="암호화 수행"
-        app:layout_constraintBottom_toTopOf="@+id/encbt"
+        android:text="암호화 할 파일 업로드"
+        app:layout_constraintBottom_toTopOf="@+id/uploadbt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,12 +57,12 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="키생성 수행"
+        android:text="복호화 할 파일 업로드"
         app:layout_constraintBottom_toTopOf="@+id/keygenerationbt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/encbt"
+        app:layout_constraintTop_toBottomOf="@+id/uploadbt"
         app:layout_constraintVertical_bias="0.689" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
