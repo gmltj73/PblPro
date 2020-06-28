@@ -79,8 +79,8 @@ public class EncActivity extends AppCompatActivity {
                 policy = edittext.getText().toString(); //정책저장
                 System.out.println("===============" + policy);
 
-                //속성기반암호화
-                //******변한부분 : sd카드 경로를 구해서 거기에 저장 ********
+
+                // sd카드 경로(dirpath)를 구함
                 String ess = Environment.getExternalStorageState();
                 String dirPath = null;
                 if (ess.equals(Environment.MEDIA_MOUNTED)) {
@@ -108,7 +108,7 @@ public class EncActivity extends AppCompatActivity {
                 encfile = dirPath + "/demo/input.cpabe"; //암호화된 파일 생성
 
                 //암호화 수행
-                Cpabe enc = new Cpabe(); //클래스 생성
+                Cpabe enc = new Cpabe();
                 System.out.println("//start to enc");
                 try {
                     enc.enc(pubfile, policy, inputfile, encfile);
@@ -123,13 +123,12 @@ public class EncActivity extends AppCompatActivity {
     }
 
 
-
-
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {  //startActivity 코드가 넘어옴
+    //파일 선택
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         String filePath = null;
-        if (requestCode == 1000 && resultCode == RESULT_OK && data != null) {
+        if (requestCode == 1000 && resultCode == RESULT_OK && data != null) { // publicfile = 1000
             //요청 코드와 결과코드 그리고 데이터(사진)이 정상적으로 선택된 상태
 
             uri = data.getData();
@@ -168,7 +167,7 @@ public class EncActivity extends AppCompatActivity {
             pubfile = filePath; //pub 파일 저장
 
         }
-        if (requestCode == 1001 && resultCode == RESULT_OK && data != null) {
+        if (requestCode == 1001 && resultCode == RESULT_OK && data != null) { // inputfile = 1001
             //요청 코드와 결과코드 그리고 데이터(사진)이 정상적으로 선택된 상태
 
             uri = data.getData();

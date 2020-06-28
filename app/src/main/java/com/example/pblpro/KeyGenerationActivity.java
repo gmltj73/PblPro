@@ -27,6 +27,7 @@ import co.junwei.cpabe.*;   //CPABE import
 
 
 public class KeyGenerationActivity extends AppCompatActivity {
+
     private ListAdapter adapter;
     private Button add;
     private Button remove;
@@ -57,8 +58,6 @@ public class KeyGenerationActivity extends AppCompatActivity {
 
         Intent intent = getIntent(); //데이터 수신
         encfile = intent.getStringExtra("filePath");//암호화된 파일
-        System.out.println("===================/////=" + encfile); //
-
 
         num = 1;
 
@@ -68,13 +67,12 @@ public class KeyGenerationActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.list);
 
         adapter = new ListAdapter();
-
         listView.setAdapter(adapter);
 
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {    //여기서부터 다시 시작
+            public void onClick(View v) {    //추가 버튼 누를시
                 Toast.makeText(KeyGenerationActivity.this, "추가되었습니다.", Toast.LENGTH_SHORT).show();
                 adapter.addItem(num + "", "", num);
                 adapter.notifyDataSetChanged();
@@ -85,7 +83,7 @@ public class KeyGenerationActivity extends AppCompatActivity {
 
         remove.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { // 삭제 버튼 누를시
                 Toast.makeText(KeyGenerationActivity.this, "삭제되었습니다.", Toast.LENGTH_SHORT).show();
                 adapter.delItem();
                 adapter.notifyDataSetChanged();
@@ -95,25 +93,21 @@ public class KeyGenerationActivity extends AppCompatActivity {
 
         result.setOnClickListener(new View.OnClickListener() {  //완료 버튼 누를 때
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { // 입력 버튼 누를시
                 Toast.makeText(KeyGenerationActivity.this, "입력되었습니다.", Toast.LENGTH_SHORT).show();
                 System.out.println(adapter.getItem(0).toString());
 
                 for (int i = 0; i < listViewItemList.size(); i++) {
-                    System.out.println("*********" + listViewItemList.get(i).getName());
-                    System.out.println("********" + listViewItemList.get(i).getProperty());
                     if (i == 0) {
-                        attr_str = listViewItemList.get(i).getProperty();
-                    } //속성저장
+                        attr_str = listViewItemList.get(i).getProperty(); // 속성 저장
+                    }
                     else {
                         attr_str = attr_str.concat("" + listViewItemList.get(i).getProperty());
-                    } //띄어쓰기로 속성 구분하면 안됨
-                    System.out.println("***********" + attr_str);
+                    }
                 }
 
 
-                //속성기반암호화
-                //******변한부분 : sd카드 경로를 구해서 거기에 저장 ********
+                // sd카드 경로(dirpath)를 구함
                 String ess = Environment.getExternalStorageState();
                 String dirPath = null;
                 if (ess.equals(Environment.MEDIA_MOUNTED)) {
@@ -126,7 +120,7 @@ public class KeyGenerationActivity extends AppCompatActivity {
 
 
                 System.out.println("===================" + dirPath);
-                String demo = dirPath + "/dec"; //dec 폴더 생성
+                String demo = dirPath + "/demo"; //demo 폴더 생성
 
                 System.out.println("============" + dirPath);
 
@@ -142,18 +136,16 @@ public class KeyGenerationActivity extends AppCompatActivity {
                 pubfile = dirPath + "/demo/pub_key";  //경로에 생성
                 mskfile = dirPath + "/demo/master_key"; //경로에 생성
                 prvfile = dirPath + "/demo/prv_key"; //경로에 생성
-                decfile = dirPath + "/demo/input.new"; //복호화된 파일 생성
-
 
                 dir = demo;
-                System.out.println("=======================" + dir);
 
 
                 Cpabe enc = new Cpabe(); //클래스 생성
 
+                //pubkey,mskkey 생성
                 System.out.println("//start to setup");
                 try {
-                    enc.setup(pubfile, mskfile);  //파일 생성
+                    enc.setup(pubfile, mskfile);
                     System.out.println("//end to setup");
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -161,35 +153,23 @@ public class KeyGenerationActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
+                //prvkey 생성
                 System.out.println("//start to keygen");
                 try {
                     enc.keygen(pubfile, prvfile, mskfile, attr_str); //키생성
+                    System.out.println("===========attr_str:"+attr_str);
                     System.out.println("//end to keygen");
                 } catch (NoSuchAlgorithmException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
-
-                //복호화
-//                System.out.println("//start to dec");
-//                try {
-//                    System.out.println(pubfile);
-//                    System.out.println(mskfile);
-//                    System.out.println(prvfile);
-//                    enc.dec(pubfile, prvfile, encfile, decfile);
-//                    System.out.println("//end to dec");
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-
             }
         });
     }
 
 
-    //어뎁터 시작
+    //리스트 - 어댑터 시작
     public class ListAdapter extends BaseAdapter {
 
         @Override

@@ -25,13 +25,12 @@ import java.io.FileOutputStream;
 
 
 public class MainActivity extends AppCompatActivity {
-    //git success
-    String g;
+
     static Uri uri;  //경로 변수
     int STORAGE_PERMISSION_CODE = 1;
 
-    //액티비티 전환에 필요한 변수
-    static String filePath = null;
+
+    static String filePath = null; //액티비티 전환에 필요한 변수
 
 
 
@@ -45,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
         Button encbt = (Button) findViewById(R.id.encbt); //암호화 버튼 객체 생성
         Button keygenerationbt = (Button) findViewById(R.id.keygenerationbt); //키생성 버튼 객체 생성
+        Button decbt = (Button) findViewById(R.id.Dec); //복호화 버튼 객체 생성
+
 
 
         //권한 요청 설정
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             requestStoragePermission();
         }
-        //여기까지
+
 
 
         //암호화 액티비티로 전환
@@ -78,7 +79,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        /*
+        //복호화 액티비티로 전환
+        decbt.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, PkslectActivity.class);//다운로드 액티비티로 전환
+                startActivity(intent);
+            }
+        });
+
+        /* 자그마한 희망
         Dropboxapi dropboxapi = new Dropboxapi();
         try {
             dropboxapi.createaccount();
@@ -92,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    //저장 권한 설정
     private void requestStoragePermission() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)) {
@@ -120,8 +129,6 @@ public class MainActivity extends AppCompatActivity {
                     new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
         }
     }
-
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == STORAGE_PERMISSION_CODE)  {
@@ -131,52 +138,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Permission DENIED", Toast.LENGTH_SHORT).show();
             }
         }
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {  //startActivity 코드가 넘어옴
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == 1000 && resultCode == RESULT_OK && data != null) {
-            //요청 코드와 결과코드 그리고 데이터(사진)이 정상적으로 선택된 상태
-
-            uri = data.getData();
-            String src = uri.getPath(); //경로 얻기
-            System.out.println("==================" + src);
-
-            Context context = getApplicationContext();
-
-            filePath = RealPathUtil.getRealPathFromURI_API19(context, uri);
-            System.out.println("==================" + filePath);
-
-            try {
-                FileInputStream fis = null;
-                FileOutputStream fos = null;
-                try {
-                    fis = new FileInputStream(filePath);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-
-                try {
-                    fos = new FileOutputStream("/data/user/0/com.example.pblpro/files/demo/input");
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                int datt = 0;
-                while ((datt = fis.read()) != -1) {
-                    fos.write(datt);
-
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-
-        }
-        System.out.println("ok");
-
     }
 
 }
