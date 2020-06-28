@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import co.junwei.cpabe.*;   //CPABE import
 
 
-public class DownloadActivity extends AppCompatActivity {
+public class KeyGenerationActivity extends AppCompatActivity {
     private ListAdapter adapter;
     private Button add;
     private Button remove;
@@ -75,7 +75,7 @@ public class DownloadActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {    //여기서부터 다시 시작
-                Toast.makeText(DownloadActivity.this, "추가되었습니다.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(KeyGenerationActivity.this, "추가되었습니다.", Toast.LENGTH_SHORT).show();
                 adapter.addItem(num + "", "", num);
                 adapter.notifyDataSetChanged();
                 num++;
@@ -86,7 +86,7 @@ public class DownloadActivity extends AppCompatActivity {
         remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(DownloadActivity.this, "삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(KeyGenerationActivity.this, "삭제되었습니다.", Toast.LENGTH_SHORT).show();
                 adapter.delItem();
                 adapter.notifyDataSetChanged();
                 num--;
@@ -96,7 +96,7 @@ public class DownloadActivity extends AppCompatActivity {
         result.setOnClickListener(new View.OnClickListener() {  //완료 버튼 누를 때
             @Override
             public void onClick(View v) {
-                Toast.makeText(DownloadActivity.this, "입력되었습니다.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(KeyGenerationActivity.this, "입력되었습니다.", Toast.LENGTH_SHORT).show();
                 System.out.println(adapter.getItem(0).toString());
 
                 for (int i = 0; i < listViewItemList.size(); i++) {
@@ -151,6 +151,15 @@ public class DownloadActivity extends AppCompatActivity {
 
                 Cpabe enc = new Cpabe(); //클래스 생성
 
+                System.out.println("//start to setup");
+                try {
+                    enc.setup(pubfile, mskfile);  //파일 생성
+                    System.out.println("//end to setup");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
 
                 System.out.println("//start to keygen");
                 try {
@@ -164,16 +173,16 @@ public class DownloadActivity extends AppCompatActivity {
 
 
                 //복호화
-                System.out.println("//start to dec");
-                try {
-                    System.out.println(pubfile);
-                    System.out.println(mskfile);
-                    System.out.println(prvfile);
-                    enc.dec(pubfile, prvfile, encfile, decfile);
-                    System.out.println("//end to dec");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+//                System.out.println("//start to dec");
+//                try {
+//                    System.out.println(pubfile);
+//                    System.out.println(mskfile);
+//                    System.out.println(prvfile);
+//                    enc.dec(pubfile, prvfile, encfile, decfile);
+//                    System.out.println("//end to dec");
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
 
             }
         });

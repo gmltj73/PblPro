@@ -1,17 +1,17 @@
 package co.junwei.bswabe;
 
-import it.unisa.dia.gas.jpbc.CurveParameters;
-import it.unisa.dia.gas.jpbc.Element;
-import it.unisa.dia.gas.jpbc.Pairing;
-import it.unisa.dia.gas.plaf.jpbc.pairing.DefaultCurveParameters;
-import it.unisa.dia.gas.plaf.jpbc.pairing.PairingFactory;
-
 import java.io.ByteArrayInputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+
+import it.unisa.dia.gas.jpbc.CurveParameters;
+import it.unisa.dia.gas.jpbc.Element;
+import it.unisa.dia.gas.jpbc.Pairing;
+import it.unisa.dia.gas.plaf.jpbc.pairing.DefaultCurveParameters;
+import it.unisa.dia.gas.plaf.jpbc.pairing.PairingFactory;
 
 public class Bswabe {
 
@@ -536,6 +536,7 @@ public class Bswabe {
 				k = Integer.parseInt(k_n[0]);
 				n = Integer.parseInt(k_n[1]);
 
+				/*k of n 설정시 k는 1보다 작거나 n보다 클 수 없고, n은 1일수도, 적힌 속성의 개수보다 클수도 없음*/
 				if (k < 1) {
 					System.out.println("error parsing " + s
 							+ ": trivially satisfied operator " + tok);

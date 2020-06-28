@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.pblpro.DownloadActivity">
+    tools:context="com.example.pblpro.KeyGenerationActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

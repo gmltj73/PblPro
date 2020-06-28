@@ -33,5 +33,9 @@ dependencies {
     implementation files('libs/dropbox-android-sdk-1.6.3.jar')
     implementation files('libs/json_simple-1.1.jar')
 
+    implementation 'com.dropbox.core:dropbox-core-sdk:3.1.4'
+    api 'com.squareup.okhttp3:okhttp:3.11.0'
+    description = 'Account Info Example (Dropbox Core API SDK)'
+
 
 }

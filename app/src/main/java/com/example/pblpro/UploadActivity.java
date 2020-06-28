@@ -12,10 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-
-import co.junwei.cpabe.*;   //CPABE import
 
 
 public class UploadActivity extends AppCompatActivity {
@@ -26,11 +23,11 @@ public class UploadActivity extends AppCompatActivity {
     private ArrayList<ListItem> filteㅔredItemList = listViewItemList; //리스트뷰 임시저장소
 
     //암호화에 필요한 변수
-    static String dir;  //절대경로
-    static String pubfile; //경로에 생성
-    static String mskfile; //경로에 생성
-    static String prvfile;  //경로에 생성
+    String dir2 = ((MainActivity)MainActivity.context_main).dir;  //mainactivity에서 불러옴
+    String pubfile2 = ((MainActivity)MainActivity.context_main).pubfile; //mainactivity에서 불러옴
+    String mskfile2 = ((MainActivity)MainActivity.context_main).mskfile; //mainactivity에서 불러옴
 
+    static String prvfile;  //경로에 생성
     static String inputfile;  //평문
     static String encfile;
     static String decfile; //복호화 파일
@@ -91,6 +88,7 @@ public class UploadActivity extends AppCompatActivity {
                 }
 
 
+                /*
                 dir = demo;
                 System.out.println("=======================" + dir);
                 pubfile = dir + "/pub_key";  //경로에 생성
@@ -101,17 +99,6 @@ public class UploadActivity extends AppCompatActivity {
                 decfile = dir + "/input.new"; //복호화된 파일 생성
 
 
-                Cpabe enc = new Cpabe(); //클래스 생성
-                System.out.println("//start to setup");
-                try {
-                    enc.setup(pubfile, mskfile);  //파일 생성
-                    System.out.println("//end to setup");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
-
 
                 System.out.println("//start to enc");
                 try {
@@ -121,6 +108,8 @@ public class UploadActivity extends AppCompatActivity {
                     e.printStackTrace();
 
                 }
+
+                 */
 
 
             }
