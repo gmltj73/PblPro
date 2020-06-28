@@ -30,7 +30,7 @@ public class PkslectActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pkslect); //
+        setContentView(R.layout.activity_pkslect); //......................
 
 
         Button pksel = (Button) findViewById(R.id.pksel); //pksel 버튼 생성
