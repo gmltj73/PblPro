@@ -93,7 +93,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button uploadbt = (Button) findViewById(R.id.uploadbt); //업로드 버튼 객체 생성
-        Button keygenerationbt = (Button) findViewById(R.id.keygenerationbt); //다운로드 버튼 객체 생성
+        Button keygenerationbt = (Button) findViewById(R.id.keygenerationbt); //키 생성 버튼 객체 생성
+        Button dec =  (Button)findViewById(R.id.Dec); // 복호화 버튼 객체 생성
 
         //권한 요청 설정
         if (ContextCompat.checkSelfPermission(MainActivity.this,
@@ -107,9 +108,6 @@ public class MainActivity extends AppCompatActivity {
 
         uploadbt.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View view) {
-
-
-
 
 
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT); //Intent 생성 //이미지 요청
@@ -131,28 +129,22 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("filePath", filePath);
                 startActivity(intent);
 
-//                Intent intent = new Intent(Intent.ACTION_GET_CONTENT); //Intent 생성 //이미지 요청
-//                intent.setType("*/*"); //파일포맷을 파일 전체로 정함
-//                intent = Intent.createChooser(intent, "choose a file");
-//                startActivityForResult(intent, 1000); // 이미지 요청 받음
-//                sw = 1;
 
             }
 
         });
 
+        dec.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View view) {
 
-        /*
-        Dropboxapi dropboxapi = new Dropboxapi();
-        try {
-            dropboxapi.createaccount();
-        } catch (DbxException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                Intent intent = new Intent(MainActivity.this, PkslectActivity.class); // 복호화 액티비티로 전환
+                startActivity(intent);
 
-         */
+
+            }
+
+        });
+
 
     }
 
