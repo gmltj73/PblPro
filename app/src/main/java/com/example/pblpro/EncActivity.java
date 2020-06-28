@@ -15,9 +15,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 
 import co.junwei.cpabe.Cpabe;
 
@@ -111,6 +108,7 @@ public class EncActivity extends AppCompatActivity {
                 Cpabe enc = new Cpabe();
                 System.out.println("//start to enc");
                 try {
+                    System.out.println("===========attr_str:"+pubfile+" ====== "+inputfile+" ====== "+policy);
                     enc.enc(pubfile, policy, inputfile, encfile);
                     System.out.println("//end to enc");
                 } catch (Exception e) {
@@ -140,28 +138,7 @@ public class EncActivity extends AppCompatActivity {
             filePath = RealPathUtil.getRealPathFromURI_API19(context, uri);
             System.out.println("==================" + filePath);
 
-            try {
-                FileInputStream fis = null;
-                FileOutputStream fos = null;
-                try {
-                    fis = new FileInputStream(filePath);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
 
-                try {
-                    fos = new FileOutputStream("/data/user/0/com.example.pblpro/files/demo/input");
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                int datt = 0;
-                while ((datt = fis.read()) != -1) {
-                    fos.write(datt);
-
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
             System.out.println("ok");
 
             pubfile = filePath; //pub 파일 저장
@@ -179,29 +156,6 @@ public class EncActivity extends AppCompatActivity {
             filePath = RealPathUtil.getRealPathFromURI_API19(context, uri);
             System.out.println("==================" + filePath);
 
-            try {
-                FileInputStream fis = null;
-                FileOutputStream fos = null;
-                try {
-                    fis = new FileInputStream(filePath);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-
-                try {
-                    fos = new FileOutputStream("/data/user/0/com.example.pblpro/files/demo/input");
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                int datt = 0;
-                while ((datt = fis.read()) != -1) {
-                    fos.write(datt);
-
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            System.out.println("ok");
 
             inputfile = filePath; //input파일 저장
 

@@ -7,27 +7,27 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 
 import co.junwei.cpabe.Cpabe;
 
 
 public class PkslectActivity extends AppCompatActivity {
 
+    private Button result;
+
+    //복호화에 필요한 변수
     static Uri uri;  //경로 변수
     static String pubfile;
     static String prvfile;
     static String encfile;
     static String decfile; //복호화 파일
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,7 +108,6 @@ public class PkslectActivity extends AppCompatActivity {
                 decfile = dirPath + "/demo/input.new"; //복호화된 파일 생성
 
                 Cpabe enc = new Cpabe(); //클래스 생성
-
                 //복호화
                 System.out.println("//start to dec");
                 try {
@@ -154,29 +153,6 @@ public class PkslectActivity extends AppCompatActivity {
             filePath = RealPathUtil.getRealPathFromURI_API19(context, uri);
             System.out.println("==================" + filePath);
 
-            try {
-                FileInputStream fis = null;
-                FileOutputStream fos = null;
-                try {
-                    fis = new FileInputStream(filePath);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-
-                try {
-                    fos = new FileOutputStream("/data/user/0/com.example.pblpro/files/demo/input");
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                int datt = 0;
-                while ((datt = fis.read()) != -1) {
-                    fos.write(datt);
-
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            System.out.println("ok");
 
             pubfile = filePath; //pub 파일 저장
             System.out.println("============="+pubfile);
@@ -194,28 +170,6 @@ public class PkslectActivity extends AppCompatActivity {
             filePath = RealPathUtil.getRealPathFromURI_API19(context, uri);
             System.out.println("==================" + filePath);
 
-            try {
-                FileInputStream fis = null;
-                FileOutputStream fos = null;
-                try {
-                    fis = new FileInputStream(filePath);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-
-                try {
-                    fos = new FileOutputStream("/data/user/0/com.example.pblpro/files/demo/input");
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                int datt = 0;
-                while ((datt = fis.read()) != -1) {
-                    fos.write(datt);
-
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
             encfile = filePath; //enc파일 저장
             System.out.println("ok");
             System.out.println("============="+encfile);
@@ -235,28 +189,6 @@ public class PkslectActivity extends AppCompatActivity {
             filePath = RealPathUtil.getRealPathFromURI_API19(context, uri);
             System.out.println("==================" + filePath);
 
-            try {
-                FileInputStream fis = null;
-                FileOutputStream fos = null;
-                try {
-                    fis = new FileInputStream(filePath);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-
-                try {
-                    fos = new FileOutputStream("/data/user/0/com.example.pblpro/files/demo/input");
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                int datt = 0;
-                while ((datt = fis.read()) != -1) {
-                    fos.write(datt);
-
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
             System.out.println("ok");
             prvfile = filePath; //prv 파일 저장
             System.out.println("============="+prvfile);

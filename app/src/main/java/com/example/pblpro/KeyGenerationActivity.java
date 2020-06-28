@@ -2,7 +2,6 @@ package com.example.pblpro;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.Editable;
@@ -23,7 +22,7 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
-import co.junwei.cpabe.*;   //CPABE import
+import co.junwei.cpabe.Cpabe;
 
 
 public class KeyGenerationActivity extends AppCompatActivity {
@@ -45,8 +44,6 @@ public class KeyGenerationActivity extends AppCompatActivity {
     static String pubfile; //경로에 생성
     static String mskfile; //경로에 생성
     static String prvfile;  //경로에 생성
-    static String encfile; // 암호화 파일
-    static String decfile; //복호화 파일
 
     static String attr_str;
 
@@ -56,8 +53,6 @@ public class KeyGenerationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_keygeneration);
 
-        Intent intent = getIntent(); //데이터 수신
-        encfile = intent.getStringExtra("filePath");//암호화된 파일
 
         num = 1;
 
@@ -119,10 +114,8 @@ public class KeyGenerationActivity extends AppCompatActivity {
                 //****************************************************
 
 
-                System.out.println("===================" + dirPath);
+                System.out.println("=====dirpath : " + dirPath);
                 String demo = dirPath + "/demo"; //demo 폴더 생성
-
-                System.out.println("============" + dirPath);
 
                 File file = new File(demo);
                 file.mkdir();
@@ -142,7 +135,7 @@ public class KeyGenerationActivity extends AppCompatActivity {
 
                 Cpabe enc = new Cpabe(); //클래스 생성
 
-                //pubkey,mskkey 생성
+                //pubkey,mskey 생성
                 System.out.println("//start to setup");
                 try {
                     enc.setup(pubfile, mskfile);
@@ -157,7 +150,7 @@ public class KeyGenerationActivity extends AppCompatActivity {
                 System.out.println("//start to keygen");
                 try {
                     enc.keygen(pubfile, prvfile, mskfile, attr_str); //키생성
-                    System.out.println("===========attr_str:"+attr_str);
+                    System.out.println("====pubfile: "+pubfile+" ====mskfile: "+mskfile+" ======attr_str: "+attr_str);
                     System.out.println("//end to keygen");
                 } catch (NoSuchAlgorithmException e) {
                     e.printStackTrace();
