@@ -53,7 +53,7 @@ public class KeyGenerationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_download);
+        setContentView(R.layout.activity_keygeneration);
 
         Intent intent = getIntent(); //데이터 수신
         encfile = intent.getStringExtra("filePath");//암호화된 파일

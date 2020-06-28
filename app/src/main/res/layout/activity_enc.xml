@@ -5,12 +5,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.pblpro.UploadActivity">
+    tools:context="com.example.pblpro.EncActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="37dp"
         android:orientation="vertical"></LinearLayout>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center_horizontal"
+        android:text="암호화에 이용할 PK를 선택하시요."
+        android:textColor="@android:color/background_dark"
+        android:textSize="18dp" />
+
+
+    <Button
+        android:id="@+id/pksel"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:text="Pk 선택"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center_horizontal"
+        android:text="암호화할 파일을 선택하시요."
+        android:textColor="@android:color/background_dark"
+        android:textSize="18dp" />
+
+
+    <Button
+        android:id="@+id/msel"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:text="원본 파일 선택"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <TextView
         android:id="@+id/textView4"
