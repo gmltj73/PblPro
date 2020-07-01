@@ -76,6 +76,80 @@ public class EncActivity extends AppCompatActivity {
                 policy = edittext.getText().toString(); //정책저장
                 System.out.println("===============" + policy);
 
+                //한글 -> 영문 치환하기
+                //String t = policy;
+                if(policy.contains("기수")){
+                    policy = policy.replace("기수", "period");
+                    if(policy.contains("1기")){
+                        policy = policy.replace("1기", "first");
+                    }
+                    if(policy.contains("2기")){
+                        policy = policy.replace("2기", "second");
+                    }
+                    if(policy.contains("3기")){
+                        policy = policy.replace("3기", "third");
+                    }
+                    if(policy.contains("4기")){
+                        policy = policy.replace("4기", "fourth");
+                    }
+                }
+                if(policy.contains("반:")){
+                    policy = policy.replace("반:", "ksjclass:");
+                    if(policy.contains("월목반")){
+                        policy = policy.replace("월목반", "monday_thursday");
+                    }
+                    if(policy.contains("화금반")){
+                        policy = policy.replace("화금반", "tuesday_friday");
+                    }
+                    if(policy.contains("수토반")) {
+                        policy = policy.replace("수토반", "wednesday_saturday");
+                    }
+                }
+                if(policy.contains("멘토")){
+                    policy = policy.replace("멘토", "mentor");
+                    if(policy.contains("최진원")){
+                        policy = policy.replace("최진원", "cjw");
+                    }
+                    if(policy.contains("박성호")){
+                        policy = policy.replace("박성호", "psh");
+                    }
+                    if(policy.contains("이호진")) {
+                        policy = policy.replace("이호진", "lhj");
+                    }
+                    if(policy.contains("정광운")) {
+                        policy = policy.replace("정광운", "jkw");
+                    }
+                    if(policy.contains("김재영")) {
+                        policy = policy.replace("김재영", "kjy");
+                    }
+                }
+                if(policy.contains("팀:")){
+                    policy = policy.replace("팀:", "team:");
+                    if(policy.contains("A팀")){
+                        policy = policy.replace("A팀", "A");
+                    }
+                    if(policy.contains("B팀")){
+                        policy = policy.replace("B팀", "B");
+                    }
+                    if(policy.contains("C팀")){
+                        policy = policy.replace("C팀", "C");
+                    }
+                    if(policy.contains("D팀")){
+                        policy = policy.replace("D팀", "D");
+                    }
+                    if(policy.contains("E팀")){
+                        policy = policy.replace("E팀", "E");
+                    }
+                    if(policy.contains("F팀")){
+                        policy = policy.replace("F팀", "F");
+                    }
+
+                }
+                System.out.println("=============change_policy: " + policy);
+                ///여기까지
+
+
+
 
                 // sd카드 경로(dirpath)를 구함
                 String ess = Environment.getExternalStorageState();
